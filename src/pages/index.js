@@ -119,7 +119,7 @@ const IndexPage = () => {
   }
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Gif Converter" />
       <input type="file" ref={fileRef} hidden onChange={(e) => {
         if (!e.target.files[0]) return;
         setVideo(e.target.files?.item(0));
