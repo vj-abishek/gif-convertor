@@ -26,20 +26,10 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <div className="w-full min-h-screen max-h-full max-w-full overflow-hidden bg-gray-100 dark:bg-gray-900 font-sans text-base flex flex-col md:justify-center items-center">
         <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <footer className="w-full bg-gray-700 dark:bg-black text-center p-2 text-white">
+          Built by <a href="https://twitter.com/abishek_py">@abishek_py</a>
         </footer>
       </div>
     </>

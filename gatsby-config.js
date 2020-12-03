@@ -1,10 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gif Convertor`,
+    description: `Video to gif convertor. It is a pwa app which works offline. Saves data charges`,
+    author: `@vj-abishek`,
   },
   plugins: [
+    'gatsby-plugin-postcss',
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -18,17 +19,31 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Gif Convertor`,
+        short_name: `gifc`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        display: `standalone`,
+        icon: `src/images/gatsby-icon.png`,
+        share_target: {
+          action: "/share-target",
+          method: "POST",
+          enctype: "multipart/form-data",
+          params: {
+            files: [{
+              name: "file",
+              accept: ["video/*"]
+            }]
+          }
+        }
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        appendScript: require.resolve(`./src/custom-sw.js`),
+      },
+    },
   ],
 }
